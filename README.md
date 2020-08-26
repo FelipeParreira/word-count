@@ -4,9 +4,13 @@
 
 This project is a web (front-end) application written in [ReactJS](https://reactjs.org).
 
-It contains a form, in which the user can input some text and submit it so that the app counts the number of words in the input. If the input text is empty/blank, it will display an error message, saying the user cannot input an empty text.
+It contains a form, in which the user can input some text.<br /> 
 
-It is deploy through Vercel [here](https://word-count-pi.vercel.app).
+Once submitted, the app counts the number of words in the input and displays it.<br /> 
+
+However, if the input is empty/blank, it will display an error message, saying the user cannot input an empty text.
+
+It is deployed through Vercel [here](https://word-count-pi.vercel.app).
 
 ## Run The App Locally
 
