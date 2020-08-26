@@ -1,22 +1,14 @@
-import { Form as FForm, Field, Formik } from 'formik';
 import { TextField, Button, ButtonGroup, FormGroup, Box } from "@material-ui/core";
-import { makeStyles } from '@material-ui/core/styles';
-import { Alert } from '@material-ui/lab';
+
+import { Form as FForm, Field, Formik } from 'formik';
+import Alert from './Alert';
 
 import classNames from 'classnames';
 import countWords from '../../utils';
 import numeral from 'numeral';
 import React from "react";
 
-const useStyles = makeStyles({
-  root: {
-    width: '50%',
-    margin: "0 auto",
-  }
-});
-
 const Form = () => {
-  const classes = useStyles();
   const initialValues = { 
     text: "", 
     wordCount: 0,
@@ -48,11 +40,7 @@ const Form = () => {
       validateOnBlur={false}
       {...{ initialValues, onSubmit, validate }}>
         {({ values, isSubmitting, errors, setFieldValue }) => (
-        <Box 
-        >
         <FForm
-          bordercolor="grey.500"
-          border={1}
           as={FormGroup} 
           size="medium"
           margin="dense"
@@ -66,35 +54,34 @@ const Form = () => {
               variant="filled"
               rows={8}
               as={TextField} 
-              classes={{root: classes.root}}
+              style={{ width: '50%', margin: "0 auto" }}
               className={classNames({ "validation-group": true })}
             />
-          <Box style= {{width: '30%', margin: '2% auto' }}>
+          
+          <Box style= {{ width: '30%', margin: '2% auto' }}>
             <ButtonGroup>
               <Button disabled={isSubmitting} type="submit">Count words</Button>
               <Button type="reset" onClick={() => setFieldValue('text', '')}>Reset text</Button>
             </ButtonGroup>
           </Box>
+
           <Box>
             { 
               values.wordCount > 0 ? 
               (
-                <Alert style={{width: '30%', margin: '0 auto'}}  variant="outlined" severity="success">
-                  {`Your text contains ${numeral(values.wordCount).format('0,0')} ${values.wordCount < 2 ? "word": "words"}.`}
-                </Alert>
+                <Alert message={`Your text contains ${numeral(values.wordCount).format('0,0')} ${values.wordCount < 2 ? "word": "words"}.`} severity="success" />
             ) :
-            (!!errors.text && 
-              <Alert style={{width: '30%', margin: '0 auto'}} variant="outlined" severity="error">
-                {errors.text}
-              </Alert>
+            (
+              !!errors.text && 
+              (
+                <Alert message={errors.text} severity="error" />
+              )
             )
-            
           }
           </Box>
         </FForm>
-        </Box>
         )}
-      </Formik>
+    </Formik>
   );
 };
 
