@@ -6,6 +6,8 @@ This project is a web (front-end) application written in [ReactJS](https://react
 
 It contains a form, in which the user can input some text and submit it so that the app counts the number of words in the input. If the input text is empty/blank, it will display an error message, saying the user cannot input an empty text.
 
+It is deploy through Vercel [here](https://word-count-pi.vercel.app).
+
 ## Run The App Locally
 
 In order to start the app in development mode [locally on port 3000](http://localhost:3000), run:
