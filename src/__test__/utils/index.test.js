@@ -12,6 +12,9 @@ describe('countWords', () => {
     expect(countWords('word .')).toBe(1);
     expect(countWords('one-word')).toBe(1);
     expect(countWords('two, words')).toBe(2);
+    expect(countWords('...here there')).toBe(2);
+    expect(countWords('here...there')).toBe(2);
+    expect(countWords('here...there!!!one')).toBe(3);
     expect(countWords('two,words')).toBe(2);
     expect(countWords('There are five words here!')).toBe(5);
     expect(countWords('1. First item; 2. Second item; 3. Third item')).toBe(9);

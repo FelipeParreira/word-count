@@ -1,4 +1,4 @@
-const nonWordCharacterPattern = /(\s|\.|,|;)+/;
+const nonWordCharacterPattern = /(\s|\.|,|;|!|\?)+/;
 const wordCharacterPattern = /\w+/;
 
 const countWords = (text) => {
