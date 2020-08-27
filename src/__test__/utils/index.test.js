@@ -4,6 +4,8 @@ describe('countWords', () => {
   it('should count the number of words in a string', () => {
     expect(countWords('')).toBe(0);
     expect(countWords(' ')).toBe(0);
+    expect(countWords('.')).toBe(0);
+    expect(countWords(' .')).toBe(0);
     expect(countWords('word ')).toBe(1);
     expect(countWords('word ,')).toBe(1);
     expect(countWords('word')).toBe(1);

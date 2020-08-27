@@ -11,7 +11,7 @@ import React from "react";
 const Form = () => {
   const initialValues = { 
     text: "", 
-    wordCount: 0,
+    wordCount: -1,
   };
 
   const onSubmit = (values, { setSubmitting, setValues }) => {
@@ -61,15 +61,18 @@ const Form = () => {
           <Box style= {{ width: '30%', margin: '2% auto' }}>
             <ButtonGroup>
               <Button disabled={isSubmitting} type="submit">Count words</Button>
-              <Button type="reset" onClick={() => setFieldValue('text', '')}>Reset text</Button>
+              <Button type="reset" onClick={() => {
+                setFieldValue('text', '');
+                setFieldValue('wordCount', -1);
+              } }>Reset text</Button>
             </ButtonGroup>
           </Box>
 
           <Box>
             { 
-              values.wordCount > 0 ? 
+              values.wordCount > -1 ? 
               (
-                <Alert message={`Your text contains ${numeral(values.wordCount).format('0,0')} ${values.wordCount < 2 ? "word": "words"}.`} severity="success" />
+                <Alert message={`Your text contains ${numeral(values.wordCount).format('0,0')} ${values.wordCount === 1 ? "word": "words"}.`} severity="success" />
             ) :
             (
               !!errors.text && 
